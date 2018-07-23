@@ -1,3 +1,7 @@
+import string
+
+from random import choice
+
 from django.shortcuts import reverse
 from django.db import models
 from django.utils import timezone
@@ -51,6 +55,20 @@ class Information(models.Model):
 
 
 class Task(models.Model):
+
+    def custom_path(instance, filename):
+        arr = [choice(string.ascii_letters) for _ in range(8)]
+        pid = ''.join(arr)
+        extension = filename.split('.')[-1]
+        date = timezone.now()
+        return 'file/%s/%s/%s/%s.%s' % (
+            date.year,
+            date.month,
+            date.day,
+            pid,
+            extension,
+        )
+
     priorities = (
         (1, '급함'),
         (2, '보통'),
@@ -59,4 +77,4 @@ class Task(models.Model):
     name = models.CharField(max_length=15)
     priority = models.PositiveIntegerField(choices=priorities, default=2)
     cost = models.PositiveIntegerField(default=0)
-    receipt = models.ImageField()
+    receipt = models.ImageField(upload_to=custom_path, blank=True)

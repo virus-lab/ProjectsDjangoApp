@@ -74,7 +74,7 @@ class Task(models.Model):
         (2, '보통'),
         (3, '보류'),
     )
-    name = models.CharField(max_length=15)
+    description = models.CharField(max_length=15)
     priority = models.PositiveIntegerField(choices=priorities, default=2)
     cost = models.PositiveIntegerField(default=0)
     receipt = models.ImageField(upload_to=custom_path, blank=True)

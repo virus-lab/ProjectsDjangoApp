@@ -1,0 +1,10 @@
+{% extends 'projects/pages/main.html' %}
+
+{% block item-content %}
+<form method="POST">
+    {% csrf_token %}
+    <p>{{ project.name }} 프로젝트를 삭제하시겠습니까?</p>
+    <input class="btn btn-outline-secondary virus-button-style" type="submit" value="삭제" />
+    <a class="btn btn-outline-secondary virus-button-style" role="button" href="{% url 'project-information' pk=project.pk %}">취소</a>
+</form>
+{% endblock %}

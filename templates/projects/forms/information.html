@@ -1,0 +1,35 @@
+{% extends 'projects/pages/main.html' %}
+
+{% block item-content %}
+<form method="POST">
+    {% csrf_token %}
+    <div class="virus-row p-0 m-0">
+        <h3>새 프로젝트 등록</h3>
+        <input class="btn btn-outline-secondary virus-button-style ml-auto" type="submit" value="&check; 등록하기" />
+        <a class="btn btn-outline-secondary virus-button-style ml-3 mr-0" href="{% url 'projects-main' %}" role="button">&#10005; 취소하기</a>
+    </div>
+    <hr></hr>
+    <div class="container virus-row p-0 m-0">
+        <div class="form-group col-6">
+            <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+            <input class="form-control" type="text" id="{{ form.name.id_for_label }}" name="{{ form.name.html_name }}" maxlength="30" placeholder="{{ form.name.label }}" value="{% if form.name.value %}{{ form.name.value }}{% endif %}" required />
+        </div>
+        <div class="form-group col-12">
+            <label for="{{ form.description.id_for_label }}">{{ form.description.label }}</label>
+            <textarea class="form-control" id="{{ form.description.id_for_label }}" name="{{ form.description.html_name }}" rows="10" placeholder="{{ form.description.label }}">{% if form.description.value %}{{ form.description.value }}{% endif %}</textarea>
+        </div>
+        <div class="form-group col-4">
+            <label for="{{ form.secure_level.id_for_label }}">{{ form.secure_level.label }}</label>
+            <select class="form-control" id="{{ form.secure_level.id_for_label }}" name="{{ form.secure_level.html_name }}" required>
+                {% for opt in form.secure_level %}
+                {{ opt }}
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group col-lg-8 col-12">
+            <label for="{{ form.file.id_for_label }}">{{ form.file.label }}</label>
+            <div>{{ form.file }}</div>
+        </div>
+    </div>
+</form>
+{% endblock %}

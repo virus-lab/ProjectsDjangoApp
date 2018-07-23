@@ -1,0 +1,57 @@
+{% extends 'projects/pages/main.html' %}
+
+{% block item-content %}
+<div class="virus-row p-0 m-0">
+    <h3>Project : {{ project.name }}</h3>
+    <div class="btn-group ml-auto" role="group" aria-label="Project Detail Tab">
+        <a class="btn btn-outline-secondary virus-button-style {% block detail-feedback-style %}{% endblock %}" href="{% url 'project-feedbacks' pk=project.pk %}">피드백</a>
+        {% if user == project.project_manager %}
+        <a class="btn btn-outline-secondary virus-button-style" href="{% url 'project-update' pk=project.pk %}">수정</a>
+        <a class="btn btn-outline-secondary virus-button-style" href="{% url 'project-delete' pk=project.pk %}">삭제</a>
+        <a class="btn btn-outline-secondary virus-button-style" href="{% url 'project-directors' pk=project.pk %}">멤버 편집</a>
+        {% endif %}
+    </div>
+        <a class="btn btn-outline-secondary virus-button-style ml-auto" href="{% url 'projects-main' %}">&#10149; 리스트로 돌아가기</a>
+</div>
+<hr></hr>
+{% block detail-content %}
+<div class="py-3">
+    <h5>총괄 디렉터</h5>
+    <p>{{ project.project_manager.first_name }}({{ project.project_manager.username }})</p>
+</div>
+<div class="py-3">
+    <h5>등록일시</h5>
+    <p>{{ project.published_date }}</p>
+</div>
+<div class="py-3">
+    <h5>프로젝트 참여 가능 범위</h5>
+    <p>{{ project.get_secure_level_display }}</p>
+</div>
+<div class="py-3">
+    <h5>프로젝트 멤버</h5>
+    {% if project.directors.all %}
+    {% for director in project.directors.all %}
+    <span>{{ director.first_name }}({{ director.username }})</span>
+    {% endfor %}
+    {% else %}
+    <span>등록된 프로젝트 멤버가 없습니다.</span>
+    {% endif %}
+</div>
+<div class="py-3">
+    <h5>프로젝트 설명</h5>
+    {% if project.description %}
+    <p>{{ project.description }}</p>
+    {% else %}
+    <p>프로젝트에 대한 설명이 없습니다.</p>
+    {% endif %}
+</div>
+<div class="py-3">
+    <h5>프로젝트 기획서</h5>
+    {% if project.file %}
+    <a href="{{ project.file.url }}">{{ project.file.url }}</a>
+    {% else %}
+    <div>기획서를 등록해주세요</div>
+    {% endif %}
+</div>
+{% endblock %}
+{% endblock %}

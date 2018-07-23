@@ -1,0 +1,34 @@
+{% extends 'dashboard/base.html' %}
+
+{% block projects-style-class %}
+current-menu
+{% endblock %}
+
+{% block item-content %}
+<div class="virus-row p-0 m-0">
+    <h3>VIRUS Projects</h3>
+    <a class="btn btn-outline-secondary virus-button-style ml-auto" href="{% url 'project-create' %}">&plus; 새 프로젝트</a>
+</div>
+<hr></hr>
+{% if projects|length > 0 %}
+<ul class="virus-list">
+    {% for project in projects %}
+    <li class="virus-list-item">
+        <div class="virus-row p-0 m-0">
+            <div class="col-lg-10 col-md-9 virus-list-item-info">
+                <h5 class="pb-0 mb-0">{{ project.name }}</h5>
+                <p>{{ project.published_date }}</p>
+            </div>
+            <div class="col-lg-2 col-md-3 virus-list-item-info">
+                <a class="btn btn-outline-secondary virus-button-style w-100 my-1" href="{% url 'project-information' pk=project.pk %}">&ii; Information</a>
+                <a class="btn btn-outline-secondary virus-button-style w-100 my-1" href="#">&#10025; Join</a>
+                <a class="btn btn-outline-secondary virus-button-style w-100 my-1" href="{% url 'project-feedbacks' pk=project.pk %}">&#10063; Feedback</a>
+            </div>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<div>현재 진행 중인 프로젝트가 없습니다.</div>
+{% endif %}
+{% endblock %}

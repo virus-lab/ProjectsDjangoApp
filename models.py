@@ -78,3 +78,4 @@ class Task(models.Model):
     priority = models.PositiveIntegerField(choices=priorities, default=2)
     cost = models.PositiveIntegerField(default=0)
     receipt = models.ImageField(upload_to=custom_path, blank=True)
+    published_date = models.DateTimeField(default=timezone.now(), editable=False)

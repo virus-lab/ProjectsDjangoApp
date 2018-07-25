@@ -75,7 +75,7 @@ class Task(models.Model):
         (3, '보류'),
     )
     description = models.CharField(max_length=15, verbose_name='내용')
-    granted_to = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    granted_to = models.ForeignKey('auth.User', on_delete=models.CASCADE, verbose_name='담당 디렉터')
     priority = models.PositiveIntegerField(choices=priorities, default=2, verbose_name='우선순위')
     cost = models.PositiveIntegerField(default=0, verbose_name='비용')
     receipt = models.ImageField(upload_to=custom_path, blank=True, verbose_name='영수증')

@@ -25,7 +25,6 @@ class MainView(ListView):
 
 
 class InformationView(DetailView):
-    template_name = 'projects/pages/information.html'
     model = ProjectInformation
     context_object_name = 'project'
 

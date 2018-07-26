@@ -1,20 +1,19 @@
 {% extends 'projects/pages/main.html' %}
 
 {% block item-content %}
-<div class="virus-row p-0 m-0">
-    <h3>Project : {{ project.name }}</h3>
-    <div class="btn-group ml-auto" role="group" aria-label="Project Detail Tab">
-        <a class="btn btn-outline-secondary virus-button-style {% block tasks-class %}{% endblock %}" href="{% url 'project-tasks' pk=project.pk %}">업무</a>
-    </div>
-    <div class="btn-group ml-auto" role="group" aria-label="Project Edit Tab">
-        {% if user == project.project_manager %}
-        <a class="btn btn-outline-secondary virus-button-style" href="{% url 'project-update' pk=project.pk %}">수정</a>
-        <a class="btn btn-outline-secondary virus-button-style" href="{% url 'project-delete' pk=project.pk %}">삭제</a>
-        <a class="btn btn-outline-secondary virus-button-style" href="{% url 'project-directors' pk=project.pk %}">멤버 편집</a>
-        {% endif %}
-    </div>
-    <div class="btn-group ml-auto" role="group" aria-label="Go back button container">
-        <a class="btn btn-outline-secondary virus-button-style" href="{% url 'projects-main' %}">&#10149; 리스트로 돌아가기</a>
+<div class="">
+    <h3 class="mb-3">Project : {{ project.name }}</h3>
+    <div class="virus-row col-md-6 col-12 ml-auto">
+        <div class="btn-group ml-auto" role="group" aria-label="Project Detail Tab">
+            <a class="btn btn-outline-secondary virus-button-style {% block tasks-class %}{% endblock %}" href="{% block tasks-href %}{% url 'project-tasks' pk=project.pk %}{% endblock %}">업무</a>
+        </div>
+        <div class="btn-group ml-2" role="group" aria-label="Project Edit Tab">
+            {% if user == project.project_manager %}
+            <a class="btn btn-outline-secondary virus-button-style" href="{% url 'project-update' pk=project.pk %}">수정</a>
+            <a class="btn btn-outline-secondary virus-button-style" href="{% url 'project-directors' pk=project.pk %}">멤버 편집</a>
+            <a class="btn btn-outline-secondary virus-button-style danger" href="{% url 'project-delete' pk=project.pk %}">삭제</a>
+            {% endif %}
+        </div>
     </div>
 </div>
 <hr></hr>
@@ -56,6 +55,9 @@
     {% else %}
     <p>아직 프로젝트 예산을 배정 받지 못했습니다.</p>
     {% endif %}
+</div>
+<div class="py-3 text-center">
+    <a class="btn btn-link virus-button-style" href="{% url 'projects-main' %}">&#10149; 리스트로 돌아가기</a>
 </div>
 {% endblock %}
 {% endblock %}

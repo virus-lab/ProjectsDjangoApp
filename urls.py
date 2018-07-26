@@ -20,4 +20,6 @@ urlpatterns = [
          name='project-directors'),
     path('<pk>/detail/', login_required(ProjectInformationView.as_view()),
          name='project-information'),
+    path('<pk>/tasks/', login_required(),
+         name='project-tasks'),
 ]

@@ -49,5 +49,13 @@
     <p>프로젝트에 대한 설명이 없습니다.</p>
     {% endif %}
 </div>
+<div class="py-3">
+    <h5 class="text-bold">프로젝트 예산</h5>
+    {% if project.budget %}
+    <p>{{ project.budget }}원</p>
+    {% else %}
+    <p>아직 프로젝트 예산을 배정 받지 못했습니다.</p>
+    {% endif %}
+</div>
 {% endblock %}
 {% endblock %}

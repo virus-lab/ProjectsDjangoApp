@@ -4,13 +4,18 @@
 <div class="virus-row p-0 m-0">
     <h3>Project : {{ project.name }}</h3>
     <div class="btn-group ml-auto" role="group" aria-label="Project Detail Tab">
+        <a class="btn btn-outline-secondary virus-button-style" href="{% url 'project-tasks' pk=project.pk %}">업무</a>
+    </div>
+    <div class="btn-group ml-auto" role="group" aria-label="Project Edit Tab">
         {% if user == project.project_manager %}
         <a class="btn btn-outline-secondary virus-button-style" href="{% url 'project-update' pk=project.pk %}">수정</a>
         <a class="btn btn-outline-secondary virus-button-style" href="{% url 'project-delete' pk=project.pk %}">삭제</a>
         <a class="btn btn-outline-secondary virus-button-style" href="{% url 'project-directors' pk=project.pk %}">멤버 편집</a>
         {% endif %}
     </div>
-        <a class="btn btn-outline-secondary virus-button-style ml-auto" href="{% url 'projects-main' %}">&#10149; 리스트로 돌아가기</a>
+    <div class="btn-group ml-auto" role="group" aria-label="Go back button container">
+        <a class="btn btn-outline-secondary virus-button-style" href="{% url 'projects-main' %}">&#10149; 리스트로 돌아가기</a>
+    </div>
 </div>
 <hr></hr>
 {% block detail-content %}

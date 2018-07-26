@@ -61,7 +61,7 @@ class Task(models.Model):
         pid = ''.join(arr)
         extension = filename.split('.')[-1]
         date = timezone.now()
-        return 'file/%s/%s/%s/%s.%s' % (
+        return 'files/%s/%s/%s/%s.%s' % (
             date.year,
             date.month,
             date.day,

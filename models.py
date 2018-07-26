@@ -42,6 +42,11 @@ class Information(models.Model):
     )
     published_date = models.DateField(editable=False)
     budget = models.PositiveIntegerField(blank=True)
+    tasks = models.ManyToManyField(
+        'projects.Task',
+        on_delete=models.CASCADE,
+        verbose_name='업무 리스트',
+    )
 
     def __str__(self):
         return self.name

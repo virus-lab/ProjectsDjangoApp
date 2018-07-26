@@ -20,6 +20,6 @@ urlpatterns = [
          name='project-directors'),
     path('<pk>/detail/', login_required(ProjectInformationView.as_view(template_name='projects/pages/information.html')),
          name='project-information'),
-    path('<pk>/tasks/', login_required(),
+    path('<pk>/tasks/', login_required(ProjectInformationView.as_view(template_name='projects/pages/tasks.html')),
          name='project-tasks'),
 ]

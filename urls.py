@@ -18,7 +18,7 @@ urlpatterns = [
          name='project-delete'),
     path('<pk>/directors/', login_required(ProjectInformationDirectorsUpdateView.as_view()),
          name='project-directors'),
-    path('<pk>/detail/', login_required(ProjectInformationView.as_view()),
+    path('<pk>/detail/', login_required(ProjectInformationView.as_view(template_name='projects/pages/information.html')),
          name='project-information'),
     path('<pk>/tasks/', login_required(),
          name='project-tasks'),

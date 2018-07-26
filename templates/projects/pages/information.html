@@ -35,10 +35,10 @@
     <h5 class="text-bold">프로젝트 멤버</h5>
     {% if project.directors.all %}
     {% for director in project.directors.all %}
-    <span>{{ director.first_name }}({{ director.username }})</span>
+    <p><span>{{ director.first_name }}({{ director.username }})</span></p>
     {% endfor %}
     {% else %}
-    <span>등록된 프로젝트 멤버가 없습니다.</span>
+    <p>등록된 프로젝트 멤버가 없습니다.</p>
     {% endif %}
 </div>
 <div class="py-3">

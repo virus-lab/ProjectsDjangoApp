@@ -7,7 +7,7 @@
         <h3>새 프로젝트 등록</h3>
         <div class="ml-auto">
         <input class="btn btn-outline-secondary virus-button-style" type="submit" value="&check; 등록하기" />
-        <a class="btn btn-outline-secondary virus-button-style ml-3 mr-0" href="{% url 'projects-main' %}" role="button">&#10005; 취소하기</a>
+        <a class="btn btn-outline-secondary virus-button-style ml-1 mr-0" href="{% url 'projects-main' %}" role="button">&#10005; 취소하기</a>
         </div>
     </div>
     <hr></hr>
@@ -30,8 +30,13 @@
         </div>
         <div class="form-group col-lg-4 col-md-6 col-12">
             <label for="{{ form.budget.id_for_label }}">{{ form.budget.label }}</label>
-            <input class="form-control" type="number" id="{{ form.budget.id_for_label }}" name="{{ form.budget.html_name }}" min="0" value="{% if form.budget.value %}{{ form.budget.value }}{% endif %}" placeholder="{{ form.budget.label }}" required />
+            <input class="form-control" type="number" id="{{ form.budget.id_for_label }}" name="{{ form.budget.html_name }}" min="0" value="{% if form.budget.value %}{{ form.budget.value }}{% else %}0{% endif %}" placeholder="{{ form.budget.label }}" />
         </div>
+    </div>
+    <div>
+        {% for error in form.non_field_error %}
+        <p>{{ error }}</p>
+        {% endfor %}
     </div>
 </form>
 {% endblock %}

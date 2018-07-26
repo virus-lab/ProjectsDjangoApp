@@ -1,5 +1,38 @@
 {% extends 'projects/pages/information.html'%}
 
+{% block tasks-class %}
+active
+{% endblock %}
+
 {% block detail-content %}
-{{ tasks }}
+<div class="virus-row p-0 m-0">
+    {% if project.tasks.all|length > 0 %}
+    <ul class="virus-list col-12">
+        {% for task in project.tasks.all %}
+        <li class="virus-list-item">
+            <div class="virus-row p-0 m-0">
+                <div class="col virus-list-item-info">
+                    <h5>{{ task.description }}</h5>
+                    <p>{{ task.published_date }}</p>
+                    {% if task.cost > 0%}
+                    <p>{{ task.cost }}원 {% if task.receipt %}쓰임{% else %}쓰일 예정{% endif %}</p>
+                    {% endif %}
+                </div>
+                <div class="col-lg-1 col-md-2 virus-list-item-info virus-row">
+                    <a class="btn btn-block btn-outline-secondary virus-button-style virus-row safe" href="#"><span class="m-auto">완료</span></a>
+                </div>
+                <div class="col-lg-2 col-md-3 virus-list-item-info">
+                    {% if task.cost > 0 %}
+                    <a class="btn btn-block btn-outline-secondary virus-button-style" href="#">영수증 등록</a>
+                    {% endif %}
+                    <a class="btn btn-block btn-outline-secondary virus-button-style virus-row m-0 danger" href="#"><span class="m-auto">삭제</span></a>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>아직 업무가 없습니다.</p>
+    {% endif %}
+</div>
 {% endblock %}

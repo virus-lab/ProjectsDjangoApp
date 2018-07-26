@@ -41,7 +41,7 @@ class Information(models.Model):
         verbose_name='참여 가능 범위',
     )
     published_date = models.DateField(editable=False)
-    budget = models.PositiveIntegerField(blank=True, verbose_name='예산')
+    budget = models.PositiveIntegerField(default=0, verbose_name='예산')
     tasks = models.ManyToManyField(
         'projects.Task',
         verbose_name='업무 리스트',

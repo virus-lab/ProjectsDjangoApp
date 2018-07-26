@@ -12,7 +12,8 @@ active
         <li class="virus-list-item">
             <div class="virus-row p-0 m-0">
                 <div class="col virus-list-item-info">
-                    <p><h5 class="d-inline">{{ task.description }}</h5>{% if task.priority == 1 %}<span class="badge badge-danger mx-2">급함</span>{% elif task.priority == 3 %}<span class="badge badge-warning mx-2" style="color: #FFFFFF;">보류</span>{% endif %}{% if task.cost > 0 %}<span class="badge badge-info">결제</span>{% endif %}</p>
+                    <h5 class="d-inline">{{ task.description }}</h5>
+                    <p>{% if task.priority == 1 %}<span class="badge badge-danger mr-2">급함</span>{% elif task.priority == 3 %}<span class="badge badge-warning mr-2" style="color: #FFFFFF;">보류</span>{% endif %}{% if task.cost > 0 %}<span class="badge badge-info mr-2">결제</span>{% endif %}</p>
                     <p>{{ task.published_date }}</p>
                     {% if task.cost > 0%}
                     <p>{{ task.cost }}원 {% if task.receipt %}쓰임{% else %}쓰일 예정{% endif %}</p>

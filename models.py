@@ -84,3 +84,6 @@ class Task(models.Model):
     cost = models.PositiveIntegerField(default=0, verbose_name='비용')
     receipt = models.ImageField(upload_to=custom_path, blank=True, verbose_name='영수증')
     published_date = models.DateTimeField(default=timezone.now, editable=False, verbose_name='등록날짜')
+
+    def __str__(self):
+        return self.description

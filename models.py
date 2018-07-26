@@ -44,7 +44,6 @@ class Information(models.Model):
     budget = models.PositiveIntegerField(blank=True)
     tasks = models.ManyToManyField(
         'projects.Task',
-        on_delete=models.CASCADE,
         verbose_name='업무 리스트',
     )
 

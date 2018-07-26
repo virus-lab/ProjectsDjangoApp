@@ -4,6 +4,10 @@
 active
 {% endblock %}
 
+{% block tasks-href %}
+{% url 'project-information' pk=project.pk %}
+{% endblock %}
+
 {% block detail-content %}
 <div class="virus-row p-0 m-0">
     {% if project.tasks.all|length > 0 %}

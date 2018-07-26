@@ -41,7 +41,7 @@ class Information(models.Model):
         verbose_name='참여 가능 범위',
     )
     published_date = models.DateField(editable=False)
-    budget = models.PositiveIntegerField(default=0)
+    budget = models.PositiveIntegerField(blank=True)
 
     def __str__(self):
         return self.name

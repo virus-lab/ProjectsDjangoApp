@@ -78,11 +78,13 @@ class Task(models.Model):
         (2, '보통'),
         (3, '보류'),
     )
+    published_director = models.ForeignKey('auth.User', on_delete=models.CASCADE, related_name='published_director', verbose_name='작성한 디렉터')
     description = models.CharField(max_length=15, verbose_name='내용')
-    granted_to = models.ForeignKey('auth.User', on_delete=models.CASCADE, verbose_name='담당 디렉터')
+    granted_to = models.ForeignKey('auth.User', on_delete=models.CASCADE, related_name='granted_to', verbose_name='담당 디렉터')
     priority = models.PositiveIntegerField(choices=priorities, default=2, verbose_name='우선순위')
     cost = models.PositiveIntegerField(default=0, verbose_name='비용')
     receipt = models.ImageField(upload_to=custom_path, blank=True, verbose_name='영수증')
+    deadline = models.DateTimeField(verbose_name='데드라인')
     published_date = models.DateTimeField(default=timezone.now, editable=False, verbose_name='등록날짜')
 
     def __str__(self):

@@ -7,13 +7,17 @@
         <div class="btn-group ml-auto" role="group" aria-label="Project Detail Tab">
             <a class="btn btn-outline-secondary virus-button-style {% block tasks-class %}{% endblock %}" href="{% block tasks-href %}{% url 'project-tasks' pk=project.pk %}{% endblock %}">업무</a>
         </div>
+        {% if user == project.project_manager %}
         <div class="btn-group ml-2" role="group" aria-label="Project Edit Tab">
-            {% if user == project.project_manager %}
             <a class="btn btn-outline-secondary virus-button-style" href="{% url 'project-update' pk=project.pk %}">수정</a>
             <a class="btn btn-outline-secondary virus-button-style" href="{% url 'project-directors' pk=project.pk %}">멤버 편집</a>
-            <a class="btn btn-outline-secondary virus-button-style danger" href="{% url 'project-delete' pk=project.pk %}">삭제</a>
-            {% endif %}
         </div>
+        {% endif %}
+        {% if user == project.project_manager %}
+        <div class="btn-group ml-2" role="group" aria-label="Project Edit Tab">
+            <a class="btn btn-outline-secondary virus-button-style danger" href="{% url 'project-delete' pk=project.pk %}">삭제</a>
+        </div>
+        {% endif %}
     </div>
 </div>
 <hr></hr>

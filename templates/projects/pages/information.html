@@ -4,7 +4,7 @@
 <div class="virus-row p-0 m-0">
     <h3>Project : {{ project.name }}</h3>
     <div class="btn-group ml-auto" role="group" aria-label="Project Detail Tab">
-        <a class="btn btn-outline-secondary virus-button-style" href="{% url 'project-tasks' pk=project.pk %}">업무</a>
+        <a class="btn btn-outline-secondary virus-button-style {% block tasks-class %}{% endblock %}" href="{% url 'project-tasks' pk=project.pk %}">업무</a>
     </div>
     <div class="btn-group ml-auto" role="group" aria-label="Project Edit Tab">
         {% if user == project.project_manager %}

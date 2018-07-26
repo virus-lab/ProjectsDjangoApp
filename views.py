@@ -32,7 +32,7 @@ class InformationView(DetailView):
 class InformationCreateView(CreateView):
     template_name = 'projects/forms/information.html'
     model = ProjectInformation
-    fields = ('name', 'description', 'secure_level',)
+    fields = ('name', 'description', 'secure_level', 'budget')
 
     def form_valid(self, form):
         form.instance.project_manager = self.request.user
@@ -42,7 +42,7 @@ class InformationCreateView(CreateView):
 class InformationUpdateView(UpdateView):
     template_name = 'projects/forms/information.html'
     model = ProjectInformation
-    fields = ('name', 'description', 'secure_level',)
+    fields = ('name', 'description', 'secure_level', 'budget')
 
 
 class InformationDirectorsUpdateView(UpdateView):

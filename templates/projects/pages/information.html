@@ -2,7 +2,7 @@
 
 {% block item-content %}
 <div class="">
-    <h3 class="mb-3">Project : {{ project.name }}</h3>
+    <h3 class="">{{ project.name }}</h3>
     <div class="virus-row col-md-6 col-12 ml-auto">
         <div class="btn-group ml-auto" role="group" aria-label="Project Detail Tab">
             <a class="btn btn-outline-secondary virus-button-style {% block tasks-class %}{% endblock %}" href="{% block tasks-href %}{% url 'project-tasks' pk=project.pk %}{% endblock %}">업무</a>

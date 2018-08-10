@@ -11,13 +11,7 @@ active
 {% block detail-content %}
 <div class="virus-row p-0 m-0">
     <div class="virus-row col-12">
-        {% if project.budget %}
-        <div class="virus-row"><span class="m-auto px-3" style="border-right: 1px solid #AFAFAF;">예산 : {{ project.budget }}</span></div>
-        <div class="virus-row ml-3"><span class="m-auto px-3" style="border-right: 1px solid #AFAFAF;">쓰인 예산 :</span></div>
-        <div class="virus-row ml-3"><span class="m-auto px-3">남은 예산 :</span></div>
-        {% endif %}
         <div class="virus-row ml-auto">
-            <a class="btn btn-outline-secondary virus-button-style px-5" href="#">완료한 업무</a>
             <a class="btn btn-outline-secondary virus-button-style px-5 ml-3" href="#">&plus; 새 업무</a>
         </div>
     </div>
@@ -31,14 +25,14 @@ active
                     <p>{% if task.priority == 1 %}<span class="badge badge-danger mr-2">급함</span>{% elif task.priority == 3 %}<span class="badge badge-warning mr-2" style="color: #FFFFFF;">보류</span>{% endif %}{% if task.cost > 0 %}<span class="badge badge-info mr-2">결제</span>{% endif %}</p>
                     <p>{{ task.deadline }}까지</p>
                     {% if task.cost > 0%}
-                    <p>{{ task.cost }}원 {% if task.receipt %}쓰임{% else %}쓰일 예정{% endif %}</p>
+                    <p>{{ task.cost }}원</p>
                     {% if task.receipt %}
                     <p>{{ task.receipt.urls }}</p>
                     {% endif %}
                     {% endif %}
                 </div>
                 <div class="col-lg-2 col-md-3 virus-list-item-info virus-row">
-                    <a class="btn btn-block btn-outline-secondary virus-button-style virus-row safe" href="#"><span class="m-auto">완료하기</span></a>
+                    <a class="btn btn-block btn-outline-secondary virus-button-style virus-row safe" href="#"><span class="m-auto">완료</span></a>
                 </div>
                 <div class="col-lg-2 col-md-3 virus-list-item-info">
                     {% if task.cost > 0 %}

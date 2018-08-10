@@ -1,10 +1,10 @@
 import string
 
-from random import choice
-
-from django.shortcuts import reverse
 from django.db import models
+from django.shortcuts import reverse
 from django.utils import timezone
+
+from random import choice
 
 # Create your models here.
 

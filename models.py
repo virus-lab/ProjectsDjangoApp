@@ -89,3 +89,15 @@ class Task(models.Model):
 
     def __str__(self):
         return self.description
+
+
+class Notice(models.Model):
+    title = models.CharField(max_length=15)
+    content = models.CharField(max_length=100)
+    alarm_to = models.ManyToManyField('projects.AlarmCheck')
+    registered_date = models.DateTimeField(auto_now=True)
+
+
+class AlarmCheck(models.Model):
+    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    checked = models.BooleanField(default=False)

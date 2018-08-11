@@ -1,26 +1,28 @@
 {% extends 'projects/pages/main.html' %}
 
 {% block item-content %}
-<form method="POST">
-    {% csrf_token %}
-    <div class="virus-row p-0 m-0">
-        <h3>프로젝트 멤버 편집</h3>
-        <div class="ml-auto">
-            <input class="btn btn-outline-secondary virus-button-style" type="submit" value="&check; 등록하기" />
-            <a class="btn btn-outline-secondary virus-button-style ml-1 mr-0" href="{% url 'projects-main' %}" role="button">&#10005; 취소하기</a>
+<div class="p-3" style="background-color: #FFFFFF; border-radius: 5px;">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="virus-row p-0 m-0">
+            <h3>프로젝트 멤버 편집</h3>
+            <div class="ml-auto">
+                <input class="btn btn-outline-secondary virus-button-style" type="submit" value="&check; 등록하기" />
+                <a class="btn btn-outline-secondary virus-button-style ml-1 mr-0" href="{% url 'projects-main' %}" role="button">&#10005; 취소하기</a>
+            </div>
         </div>
-    </div>
-    <hr></hr>
-    <div class="container virus-row p-0 m-0">
-        <div class="form-group col-lg-6 col-md-8 col-12">
-            <label for="{{ form.directors.id_for_label }}">{{ form.directors.label }}</label>
-            <select class="form-control" name="{{ form.directors.html_name }}" id="{{ form.directors.id_for_label }}" multiple="multiple">
-                {% for opt in form.directors %}
-                {{ opt }}
-                {% endfor %}
-            </select>
-            <p class="text-muted py-1">* 다중 선택은 Window는 Ctrl키, 맥은 Command키를 눌러서 선택해주세요.</p>
+        <hr></hr>
+        <div class="container virus-row p-0 m-0">
+            <div class="form-group col-lg-6 col-md-8 col-12">
+                <label for="{{ form.directors.id_for_label }}">{{ form.directors.label }}</label>
+                <select class="form-control" name="{{ form.directors.html_name }}" id="{{ form.directors.id_for_label }}" multiple="multiple">
+                    {% for opt in form.directors %}
+                    {{ opt }}
+                    {% endfor %}
+                </select>
+                <p class="text-muted py-1">* 다중 선택은 Window는 Ctrl키, 맥은 Command키를 눌러서 선택해주세요.</p>
+            </div>
         </div>
-    </div>
-</form>
+    </form>
+</div>
 {% endblock %}

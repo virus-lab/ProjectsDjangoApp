@@ -9,49 +9,51 @@ active
 {% endblock %}
 
 {% block detail-content %}
-<div class="virus-row p-0 m-0">
-    <div class="virus-row col-12">
-        <div class="virus-row ml-auto">
-            <a class="btn btn-outline-secondary virus-button-style px-5 ml-3" href="#">&plus; 새 업무</a>
-        </div>
-    </div>
-    {% if project.tasks.all|length > 0 %}
-    <ul class="virus-list col-12 py-3">
-        {% for task in project.tasks.all %}
-        <li class="virus-list-item">
-            <div class="virus-row p-0 m-0">
-                <div class="col virus-list-item-info">
-                    <h5 class="d-inline">{{ task.description }}</h5>
-                    <p>{% if task.priority == 1 %}<span class="badge badge-danger mr-2">급함</span>{% elif task.priority == 3 %}<span class="badge badge-warning mr-2" style="color: #FFFFFF;">보류</span>{% endif %}{% if task.cost > 0 %}<span class="badge badge-info mr-2">결제</span>{% endif %}</p>
-                    <p>{{ task.deadline }}까지</p>
-                    {% if task.cost > 0%}
-                    <p>{{ task.cost }}원</p>
-                    {% if task.receipt %}
-                    <p>{{ task.receipt.urls }}</p>
-                    {% endif %}
-                    {% endif %}
-                </div>
-                <div class="col-lg-2 col-md-3 virus-list-item-info virus-row">
-                    <a class="btn btn-block btn-outline-secondary virus-button-style virus-row safe" href="#"><span class="m-auto">완료</span></a>
-                </div>
-                <div class="col-lg-2 col-md-3 virus-list-item-info">
-                    {% if task.cost > 0 %}
-                    {% if task.receipt %}
-                    <a class="btn btn-block btn-outline-secondary virus-button-style mb-1" href="#">영수증 교체</a>
-                    {% else %}
-                    <a class="btn btn-block btn-outline-secondary virus-button-style mb-1" href="#">영수증 등록</a>
-                    {% endif %}
-                    {% endif %}
-                    <a class="btn btn-block btn-outline-secondary virus-button-style virus-row m-0 danger" href="#"><span class="m-auto">삭제</span></a>
-                </div>
+<div class="p-3" style="background-color: #FFFFFF; border-radius: 5px;">
+    <div class="virus-row p-0 m-0">
+        <div class="virus-row col-12">
+            <div class="virus-row ml-auto">
+                <a class="btn btn-outline-secondary virus-button-style px-5 ml-3" href="#">&plus; 새 업무</a>
             </div>
-        </li>
-        {% endfor %}
-    </ul>
-    {% else %}
-    <div class="virus-row col-12 py-3">
-        <p class="px-3">아직 업무가 없습니다.</p>
+        </div>
+        {% if project.tasks.all|length > 0 %}
+        <ul class="virus-list col-12 py-3">
+            {% for task in project.tasks.all %}
+            <li class="virus-list-item">
+                <div class="virus-row p-0 m-0">
+                    <div class="col virus-list-item-info">
+                        <h5 class="d-inline">{{ task.description }}</h5>
+                        <p>{% if task.priority == 1 %}<span class="badge badge-danger mr-2">급함</span>{% elif task.priority == 3 %}<span class="badge badge-warning mr-2" style="color: #FFFFFF;">보류</span>{% endif %}{% if task.cost > 0 %}<span class="badge badge-info mr-2">결제</span>{% endif %}</p>
+                        <p>{{ task.deadline }}까지</p>
+                        {% if task.cost > 0%}
+                        <p>{{ task.cost }}원</p>
+                        {% if task.receipt %}
+                        <p>{{ task.receipt.urls }}</p>
+                        {% endif %}
+                        {% endif %}
+                    </div>
+                    <div class="col-lg-2 col-md-3 virus-list-item-info virus-row">
+                        <a class="btn btn-block btn-outline-secondary virus-button-style virus-row safe" href="#"><span class="m-auto">완료</span></a>
+                    </div>
+                    <div class="col-lg-2 col-md-3 virus-list-item-info">
+                        {% if task.cost > 0 %}
+                        {% if task.receipt %}
+                        <a class="btn btn-block btn-outline-secondary virus-button-style mb-1" href="#">영수증 교체</a>
+                        {% else %}
+                        <a class="btn btn-block btn-outline-secondary virus-button-style mb-1" href="#">영수증 등록</a>
+                        {% endif %}
+                        {% endif %}
+                        <a class="btn btn-block btn-outline-secondary virus-button-style virus-row m-0 danger" href="#"><span class="m-auto">삭제</span></a>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <div class="virus-row col-12 py-3">
+            <p class="px-3">아직 업무가 없습니다.</p>
+        </div>
+        {% endif %}
     </div>
-    {% endif %}
 </div>
 {% endblock %}

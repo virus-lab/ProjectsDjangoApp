@@ -1,13 +1,15 @@
 {% extends 'projects/pages/main.html' %}
 
 {% block item-content %}
-<form method="POST">
-    {% csrf_token %}
-    <h3>해당 프로젝트를 삭제하시겠습니까?</h3>
-    <hr></hr>
-    <h4>Project : {{ project.name }}</h4>
-    <p>프로젝트를 삭제 후에는 되돌리 수 없습니다.</p>
-    <input class="btn btn-outline-secondary virus-button-style danger px-5" type="submit" value="삭제" />
-    <a class="btn btn-outline-secondary virus-button-style px-5" role="button" href="{% url 'project-information' pk=project.pk %}">취소</a>
-</form>
+<div class="p-3" style="background-color: #FFFFFF; border-radius: 5px;">
+    <form method="POST">
+        {% csrf_token %}
+        <h3>해당 프로젝트를 삭제하시겠습니까?</h3>
+        <hr></hr>
+        <h4>Project : {{ project.name }}</h4>
+        <p>프로젝트를 삭제 후에는 되돌리 수 없습니다.</p>
+        <input class="btn btn-outline-secondary virus-button-style danger px-5" type="submit" value="삭제" />
+        <a class="btn btn-outline-secondary virus-button-style px-5" role="button" href="{% url 'project-information' pk=project.pk %}">취소</a>
+    </form>
+</div>
 {% endblock %}
